@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OyutniiBurtgel
@@ -50,6 +51,11 @@ namespace OyutniiBurtgel
             else if (rbOroi.Checked)
                 study = "Оройн";
 
+            List<string> subjects = new List<string>();
+            foreach (var item in clbSubject.CheckedItems)
+                subjects.Add(item.ToString());
+            string subjectText = subjects.Count > 0 ? string.Join(", ", subjects) : "Сонгоогүй";
+
             rtbInfo.Text =
                 "ОЮУТНЫ БҮРТГЭЛ\r\n" +
                 "----------------------\r\n" +
@@ -60,7 +66,8 @@ namespace OyutniiBurtgel
                 dtpBirth.Value.ToString("yyyy-MM-dd") + "\r\n" +
                 "Сургалт: " + study + "\r\n" +
                 "Тэнхим: " + major + "\r\n" +
-                "Улс: " + country;
+                "Улс: " + country + "\r\n" +
+                "Хичээл: " + subjectText;
 
             dgvStudent.Rows.Clear();
 
