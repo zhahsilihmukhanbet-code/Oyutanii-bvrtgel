@@ -10,8 +10,27 @@ namespace OyutniiBurtgel
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Text = "Оюутны бүртгэл";
+            if (lstCountry.Items.Count > 0) lstCountry.SelectedIndex = 0;
+            if (cmbMajor.Items.Count > 0) cmbMajor.SelectedIndex = 0;
+            rbUdur.Checked = true;
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtCode.Text) || string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                MessageBox.Show(
+                    "Оюутны код болон утасны дугаарыг оруулна уу!",
+                    "Анхааруулга",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
             string country = "";
 
             if (lstCountry.SelectedItem != null)
